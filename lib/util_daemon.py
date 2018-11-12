@@ -19,6 +19,7 @@
 from __future__ import print_function
 import os
 
+
 # Mimics OpenSSH openbsd-compat/daemon.c
 # Detach from the controlling terminal and run in the background.
 
@@ -39,7 +40,7 @@ def daemon(nochdir=False, noclose=False):
 
     if not nochdir:
         os.chdir('/')
-        
+
     if noclose:
         return
 
@@ -52,6 +53,7 @@ def daemon(nochdir=False, noclose=False):
             os.close(fd)
     except OSError:
         raise
+
 
 if __name__ == '__main__':
     import sys
@@ -77,7 +79,7 @@ if __name__ == '__main__':
             print('test3: daemon-test3 should be created in the '
                   'current directory')
             Daemon(nochdir=True)
-            fd = os.open('daemon-test3', os.O_WRONLY|os.O_CREAT)
+            fd = os.open('daemon-test3', os.O_WRONLY | os.O_CREAT)
             os.close(fd)
             print('done')
             time.sleep(10)
